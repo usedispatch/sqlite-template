@@ -1,0 +1,20 @@
+{
+  "name": "ao-counter",
+  "version": "0.0.1",
+  "description": "Starter code for full stack ao apps",
+  "main": "index.js",
+  "repository": "https://github.com/usedispatch/ao-counter.git",
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "deploy:process": "aoform apply -f processes.yaml",
+    "build:process": "lua process/scripts/build.lua",
+    "dev:frontend": "cd app && yarn dev",
+    "build:frontend": "cd app && yarn build",
+    "clean:process": "rm -rf process/build",
+    "test:process": "cd test && yarn test"
+  },
+  "devDependencies": {
+    "aoform": "^1.0.5"
+  }
+}
