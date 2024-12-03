@@ -1,15 +1,15 @@
 local sqlite3 = require("lsqlite3")
 local json = require("json")
 DB = DB or sqlite3.open_memory()
--- DbAdmin = require('@rakis/DbAdmin').new(DB)
-DbAdmin = require('DbAdmin').new(DB)
+DbAdmin = dbAdmin.new(DB)
+
 function Configure()
     -- Create Todo table with basic fields
     DbAdmin:exec[[
     CREATE TABLE Todos (
         id TEXT PRIMARY KEY,
         title TEXT NOT NULL,
-        completed BOOLEAN DEFAULT 0
+        completed BOOLEAN DEFAULT 0,
     );
     ]]
 
@@ -37,7 +37,6 @@ end
 -- Get all todos
 function getTodos()
     local results = DbAdmin:exec("SELECT * FROM Todos;")
-    print(results)
     return json.encode(results)
 end
 
@@ -68,6 +67,7 @@ end
 -- Get all todos
 function getTodosProcessor(msg)
     local data = getTodos()
+    print(data)
     sendReply(msg, data)
 end
 

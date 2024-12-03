@@ -7,7 +7,7 @@
   "author": "",
   "license": "MIT",
   "scripts": {
-    "deploy:process": "aoform apply -f processes.yaml",
+    "deploy:process": "lua process/scripts/replace.lua && aoform apply -f processes.yaml",
     "build:process": "lua process/scripts/build.lua",
     "dev:frontend": "cd app && yarn dev",
     "build:frontend": "cd app && yarn build",

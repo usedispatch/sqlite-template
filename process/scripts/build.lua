@@ -25,4 +25,8 @@ local outFile = assert(io.open("process/build/output.lua", "w"))
 outFile:write(table.concat(output, "\n\n"))
 outFile:close()
 
+-- Run the replace script to update DbAdmin line
+print("Running replace script...")
+dofile("process/scripts/replace.lua")
+
 print("Build complete. Output written to output.lua")
