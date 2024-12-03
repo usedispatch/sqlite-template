@@ -16,6 +16,35 @@ describe("Tests", () => {
     await env.init();
   });
 
+  test("load DbAdmin module", async () => {
+    const dbAdminCode = fs.readFileSync(
+      path.join(__dirname, "../../process/build/dbAdmin.lua"),
+      "utf-8"
+    );
+    const result = await env.send({
+      Action: "Eval",
+      Data: `
+  local function _load() 
+    ${dbAdminCode}
+  end
+  _G.package.loaded["DbAdmin"] = _load()
+  return "ok"
+      `,
+    });
+    console.log("result DbAdmin Module", result);
+    assert.equal(result.Output.data, "ok");
+  });
+
+  test("load source", async () => {
+    const code = fs.readFileSync(
+      path.join(__dirname, "../../process/build/output.lua"),
+      "utf-8"
+    );
+    const result = await env.send({ Action: "Eval", Data: code });
+    console.log("result load source", result);
+    // assert.equal(result.Output.data, "OK");
+  });
+
   test("should add and get todo", async () => {
     const todo = {
       id: "1",

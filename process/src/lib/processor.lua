@@ -8,6 +8,7 @@ end
 -- Get all todos
 function getTodosProcessor(msg)
     local data = getTodos()
+    print(data)
     sendReply(msg, data)
 end
 

@@ -1,7 +1,8 @@
 - name: sqlite-todo
   file: process/build/output.lua
   scheduler: _GQ33BkPtZrqxA84vM8Zk-N2aO0toNNu_C-l-rawrBA
-  module: bkjb55i07GUCUSWROtKK4HU1mBS_X0TyH3M5jMV6aPg
+  prerun: process/prerun.lua
+  module: ghSkge2sIUD_F00ym5sEimC63BDBuBrq4b5OcwxOjiw
   tags:
     - name: Name
       value: sqlite-todo
