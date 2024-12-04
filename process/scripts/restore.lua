@@ -16,17 +16,20 @@ local dbAdminPath = "process/build/dbAdmin.lua"
 local content = readFile(outputPath)
 local dbAdminContent = readFile(dbAdminPath)
 
--- Replace the specific lines
+-- Restore the original line
 local newContent = string.gsub(
     content,
-    "DbAdmin = require%('DbAdmin'%)%.new%(DB%)",
-    "DbAdmin = dbAdmin.new(DB)"
+    "DbAdmin = dbAdmin%.new%(DB%)",
+    "DbAdmin = require('DbAdmin').new(DB)"
 )
 
--- Remove the return dbAdmin line
-newDbAdminContent = string.gsub(dbAdminContent, "return%s+dbAdmin%s*\n*$", "")
+-- Restore the return dbAdmin line at the end
+local newDbAdminContent = dbAdminContent
+if not string.match(dbAdminContent, "return%s+dbAdmin%s*\n*$") then
+    newDbAdminContent = dbAdminContent .. "\nreturn dbAdmin\n"
+end
 
 writeFile(outputPath, newContent)
 writeFile(dbAdminPath, newDbAdminContent)
-print("Replacement complete in " .. outputPath)
-print("Replacement complete in " .. dbAdminPath)
+print("Restoration complete in " .. outputPath)
+print("Restoration complete in " .. dbAdminPath)

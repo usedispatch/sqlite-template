@@ -1,4 +1,4 @@
-# AO Counter App
+# AO App Template
 
 A full-stack decentralized counter application built with AO, React, TypeScript, and Vite. This application demonstrates a simple counter implementation using AO's permanent computation network.
 

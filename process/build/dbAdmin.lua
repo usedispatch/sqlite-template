@@ -76,3 +76,5 @@ function dbAdmin:select(sql, values)
    return results
 end
 
+
+return dbAdmin
