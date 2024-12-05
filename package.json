@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Starter code for full stack ao apps",
   "main": "index.js",
-  "repository": "https://github.com/usedispatch/ao-counter.git",
+  "repository": "https://github.com/usedispatch/sqlite-template.git",
   "author": "",
   "license": "MIT",
   "scripts": {
